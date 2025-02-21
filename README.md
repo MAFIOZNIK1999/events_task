@@ -79,6 +79,12 @@ docker-compose up
 127.0.0.1:8000/api/v1/test-task/
 ```
 
+11. If you want to stop the project write this in your terminal
+
+```
+docker-compose stop
+```
+
 ### Technologies:
 
 - Python 3.12.1

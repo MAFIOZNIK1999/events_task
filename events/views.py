@@ -19,12 +19,13 @@ class EventViewSet(viewsets.ModelViewSet):
 class EventRegistrationViewSet(viewsets.ModelViewSet):
     queryset = EventRegistration.objects.all()
     serializer_class = EventRegistrationSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
     def create(self, request, *args, **kwargs):
         user = request.user
-        event_id = request.data.get('event')
+        event_id = request.data.get("event")
 
-        if EventRegistration.objects.filter(event_id=event_id, user=user).exists():
+        if self.queryset.filter(event_id=event_id, user=user).exists():
             return Response({"error": "You have already registered on this event"}, status=status.HTTP_400_BAD_REQUEST)
 
         return super().create(request, *args, **kwargs)

@@ -58,7 +58,7 @@ docker-compose up
 7. For start you should register user
 
 ```
-http://127.0.0.1:8000/api/register/
+127.0.0.1:8000/api/register/
 ```
 
 8. Take token
@@ -67,10 +67,16 @@ http://127.0.0.1:8000/api/register/
 127.0.0.1:8000/token/
 ```
 
-9. Use full CRUD with this token
+9. Full project endpoints
 
 ```
 127.0.0.1:8000/
+```
+
+10. Full CRUD
+
+```
+127.0.0.1:8000/api/v1/test-task/
 ```
 
 ### Technologies:

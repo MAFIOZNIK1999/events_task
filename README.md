@@ -58,7 +58,7 @@ docker-compose up
 7. For start you should register user
 
 ```
-127.0.0.1:8000/api/register/
+[127.0.0.1:8000/api/register/](http://127.0.0.1:8000/api/register/)
 ```
 
 8. Take token

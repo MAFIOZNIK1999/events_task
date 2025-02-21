@@ -45,3 +45,12 @@ pip install -r requirements.txt
 ```angular2html
 python manage.py migrate
 ```
+
+6. For run server you should use docker-compose comands
+
+```
+docker-compose build
+```
+```
+docker-compose up
+```

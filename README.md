@@ -67,13 +67,13 @@ docker-compose up
 127.0.0.1:8000/token/
 ```
 
-9. Full project endpoints
+9. All project endpoints
 
 ```
 127.0.0.1:8000/
 ```
 
-10. Full CRUD
+10. All CRUD
 
 ```
 127.0.0.1:8000/api/v1/test-task/

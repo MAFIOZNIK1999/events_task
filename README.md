@@ -54,3 +54,29 @@ docker-compose build
 ```
 docker-compose up
 ```
+
+7. For start you should register user
+
+```
+127.0.0.1:8000/api/register/
+```
+
+8. Take token
+
+```
+127.0.0.1:8000/token/
+```
+
+9. Use full CRUD with this token
+
+```
+127.0.0.1:8000/
+```
+
+### Technologies:
+
+- Python 3.12.1
+- SQLite, PostgreSQL databases
+- Django Rest Framework
+- Docker
+- API documentation(Swagger)

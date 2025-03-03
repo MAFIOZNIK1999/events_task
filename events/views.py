@@ -1,25 +1,32 @@
-from django.shortcuts import render
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets, status, permissions
 from rest_framework.response import Response
 
 from events.filters import EventFilter
 from events.models import Event, EventRegistration
-from events.serializers import EventSerializer, EventRegistrationSerializer
+from events.serializers import EventSerializer, EventRegistrationSerializer, EventListSerializer, EventDetailSerializer, \
+    EventRegistrationListSerializer, EventRegistrationDetailSerializer
 
 
 class EventViewSet(viewsets.ModelViewSet):
     queryset = Event.objects.all()
     serializer_class = EventSerializer
-    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+    # permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
     filter_backends = [DjangoFilterBackend]
     filterset_class = EventFilter
+
+    def get_serializer_class(self):
+        if self.action == "list":
+            return EventListSerializer
+        if self.action == "retrieve":
+            return EventDetailSerializer
+        return self.serializer_class
 
 
 class EventRegistrationViewSet(viewsets.ModelViewSet):
     queryset = EventRegistration.objects.all()
     serializer_class = EventRegistrationSerializer
-    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+    # permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
     def create(self, request, *args, **kwargs):
         user = request.user
@@ -35,3 +42,11 @@ class EventRegistrationViewSet(viewsets.ModelViewSet):
         if self.action in ("list", "retrieve"):
             return queryset.select_related("event", "user")
         return queryset
+
+
+    def get_serializer_class(self):
+        if self.action == "list":
+            return EventRegistrationListSerializer
+        if self.action == "retrieve":
+            return EventRegistrationDetailSerializer
+        return self.serializer_class

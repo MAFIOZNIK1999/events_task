@@ -6,7 +6,7 @@ from event_service import settings
 class Event(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField(null=True, blank=True)
-    date = models.DateTimeField(auto_now_add=True)
+    date = models.DateTimeField()
     location = models.CharField(max_length=255)
 
     organizer = models.ForeignKey(
